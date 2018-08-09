@@ -15,6 +15,9 @@
 //= require jquery3
 //= require jquery_ujs
 //= require popper
+//= require admin/grasp_mobile_progress_circle.min
 //= require bootstrap-sprockets
+//= require jquery.mCustomScrollbar.concat.min
+//= require admin/front
 //= require turbolinks
 //= require_tree .
