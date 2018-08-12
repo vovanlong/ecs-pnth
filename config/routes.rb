@@ -4,4 +4,10 @@ Rails.application.routes.draw do
     get "/", to: "dashbroads#index"
     resources :users, only: [:index]
   end
+
+  namespace :authentication do
+    get "/signup", to: "auths#new"
+    resources :auths, only: [:create]
+    # resources :user
+  end
 end
