@@ -11,6 +11,14 @@
    <%= render 'layouts/admin/sidebar' %>
     <div class="page">
       <%= render 'layouts/admin/header' %>
+      <% if flash.any? %>
+        <script type="text/javascript">
+          <% flash.each do |key, value| %>
+            <% type = key.to_s.gsub('danger', 'error').gsub('notice', 'success') %>
+            toastr.<%= type %>('<%= value %>')
+          <% end %>
+        </script>
+      <% end %>
       <%= yield %>
     </div>
   </body>

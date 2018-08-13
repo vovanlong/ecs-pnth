@@ -15,6 +15,7 @@
 //= require jquery3
 //= require jquery_ujs
 //= require popper
+//= require toastr
 //= require admin/grasp_mobile_progress_circle.min
 //= require bootstrap-sprockets
 //= require jquery.mCustomScrollbar.concat.min

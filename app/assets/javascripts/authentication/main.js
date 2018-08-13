@@ -16,10 +16,6 @@
 //= require jquery_ujs
 //= require popper
 //= require toastr
-//= require jquery.validate
-//= require jquery.validate.additional-methods
-//= require jquery.validate.localization/messages_es
-//= require jquery.validate.localization/messages_de
 //= require authentication/my-main
 //= require bootstrap-sprockets
 //= require turbolinks

@@ -12,8 +12,11 @@ class Authentication::AuthsController < Authentication::BaseController
     
     @user = User.new user_params
     if @user.save
+      log_in @user
+      flash[:notice] = 'Login success'
       redirect_to admin_path
     else
+      flash[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
