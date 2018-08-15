@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_084748) do
     t.string "name"
     t.string "address"
     t.string "phone_number"
+    t.string "remember_digest"
     t.integer "role", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
