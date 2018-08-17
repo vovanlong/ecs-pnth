@@ -24,6 +24,7 @@ class Authentication::SessionsController < Authentication::BaseController
     binding.pry
     
     log_out
+    flash[:notice] = 'success logout'
     redirect_to login_path
   end
   

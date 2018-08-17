@@ -5,6 +5,9 @@ module SessionsHelper
   end
 
   def current_user
+    
+    # binding.pry
+    
     if user_id = session[:user_id]
       @current_user ||= User.find_by id: user_id 
     elsif user_id = cookies.signed[:user_id]
@@ -28,7 +31,7 @@ module SessionsHelper
 
   def forget user
     
-    binding.pry
+    # binding.pry
     
     user.forget
     cookies.delete :user_id
@@ -37,7 +40,7 @@ module SessionsHelper
 
   def log_out
     
-    binding.pry
+    # binding.pry
     forget current_user 
     session.delete :user_id
     @current_user = nil

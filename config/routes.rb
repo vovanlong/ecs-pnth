@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'authentication/sessions#destroy'
   namespace :admin do
     get "/", to: "dashbroads#index"
-    resources :users, only: [:index, :edit ,:update]
+    resources :users, only: [:index, :edit ,:update, :destroy]
   end
 
   namespace :authentication do

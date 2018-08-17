@@ -12,7 +12,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 },  allow_nil: true
   
-  enum role: { admin: 0, customer: 1 }
+  enum role: { admin: 0, customer: 1, employees: 2 }
   before_save :downcase_email
   has_secure_password
   self.per_page = 10
