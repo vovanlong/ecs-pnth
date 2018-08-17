@@ -1,5 +1,5 @@
 class Authentication::SessionsController < Authentication::BaseController
-  before_action :load_user, only: :create
+  before_action :load_user, only: [:create]
   
   def new
   end
@@ -24,7 +24,7 @@ class Authentication::SessionsController < Authentication::BaseController
     binding.pry
     
     log_out
-    redirect_to admin_path
+    redirect_to login_path
   end
   
 
