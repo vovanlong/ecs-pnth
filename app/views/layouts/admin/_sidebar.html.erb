@@ -13,8 +13,17 @@
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
-          <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="index.html"> <i class="icon-home"></i>Home</a></li>
+          <ul id="side-main-menu" class="side-menu list-unstyled">  
+            <li>
+              <%= link_to admin_path do %>
+                <i class="fa fa-home"></i>Home
+              <% end %>
+            </li>                
+            <li>
+              <%= link_to admin_users_path do %>
+                <i class="fa fa-users"></i>Manager Users
+              <% end %>
+            </li>
             <li><a href="forms.html"> <i class="icon-form"></i>Forms</a></li>
             <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts</a></li>
             <li><a href="tables.html"> <i class="icon-grid"></i>Tables</a></li>

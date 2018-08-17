@@ -20,5 +20,6 @@
 //= require bootstrap-sprockets
 //= require jquery.mCustomScrollbar.concat.min
 //= require admin/front
+//= require sweetalert
 //= require turbolinks
 //= require_tree .

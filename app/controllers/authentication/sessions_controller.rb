@@ -5,10 +5,6 @@ class Authentication::SessionsController < Authentication::BaseController
   end
 
   def create
-    
-    binding.pry
-    
-    
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
@@ -20,9 +16,6 @@ class Authentication::SessionsController < Authentication::BaseController
   end
 
   def destroy
-    
-    binding.pry
-    
     log_out
     flash[:notice] = 'success logout'
     redirect_to login_path
@@ -31,7 +24,7 @@ class Authentication::SessionsController < Authentication::BaseController
 
   private
 
-    def load_user 
+    def load_user
       @user = User.find_by email: params[:session][:email].downcase
     end
 

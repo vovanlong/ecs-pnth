@@ -23,6 +23,7 @@ gem "pry-rails", "~> 0.3.4"
 gem "will_paginate", "~> 3.1", ">= 3.1.6"
 gem "will_paginate-bootstrap4", "~> 0.2.2"
 gem "toastr-rails"
+gem 'sweetalert-rails'
 
 
 group :development, :test do

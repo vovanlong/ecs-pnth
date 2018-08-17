@@ -23,7 +23,9 @@
             <h4>Basic Table</h4>
           </div>
           <div class="col-lg-3" style="padding-top:10px">
-            <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+            <%= link_to  new_admin_user_path,  class: "btn btn-primary" do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
           </div>
         </div>
       </div>
@@ -52,23 +54,41 @@
                     <td><%=user.phone_number%><i class="fas fa-highlighter"></i></td>
                     <td><%=user.role.capitalize%></td>
                     <td>
-                    <%= link_to edit_admin_user_path(user), class: "btn btn-primary" do  %>
-                      <i class="fa fa-edit"></i>
+                    <% if current_user.id == user.id %>
+                      <%= link_to edit_admin_user_path(user), class: "btn btn-primary" do  %>
+                        <i class="fa fa-edit"></i>
+                      <% end %>
                     <% end %>
                     <% if current_user.role == "admin" %>
-                      <%= link_to admin_user_path(user),id:"btn-del", class: "btn btn-danger",method: :delete do %>  
+                      <button class="btn btn-danger">
                         <i class="fa fa-trash"></i>
-                      <% end %>
+                        <%= link_to admin_user_path(user),class:"button", method: :delete do %>
+                        <% end %>
+                      </button>
                     <% end %>
                     </td>
                 </tr>
               <%end%>
             </tbody>
-            <script type="text/javascript">
-              $(document).ready(function(){
-                $('#btn-del').click(function(){
-                  swal('ban muon xoa k')
-                });
+            <script>
+              $('.btn-danger').click(function(){
+                swal({
+                  title: "Are you sure?",
+                  text: "You will not be able to recover this imaginary file!",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: '#DD6B55',
+                  confirmButtonText: 'Yes, I am sure!',
+                  cancelButtonText: "No, cancel it!",
+                  closeOnConfirm: false,
+                  closeOnCancel: true
+                },
+                function(isConfirm){
+                     if (isConfirm){
+                          $('.button').click();
+                      } 
+                  }
+                )
               });
             </script>
           </table>
@@ -78,4 +98,5 @@
     </div>
   </div>
 </div>
+
 
