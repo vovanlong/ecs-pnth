@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
     def forget
       
-      binding.pry
+      # binding.pry
       
       update_attribute :remember_digest, nil
     end

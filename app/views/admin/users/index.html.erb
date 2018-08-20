@@ -59,7 +59,7 @@
                         <i class="fa fa-edit"></i>
                       <% end %>
                     <% end %>
-                    <% if current_user.role == "admin" %>
+                    <% if current_user.role == "admin" && user.role != current_user.role %>
                       <button class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                         <%= link_to admin_user_path(user),class:"button", method: :delete do %>

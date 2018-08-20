@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/", to: "dashbroads#index"
     resources :users
+    resources :categories
   end
 
   namespace :authentication do
