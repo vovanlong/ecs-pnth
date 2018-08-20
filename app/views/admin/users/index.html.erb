@@ -36,7 +36,7 @@
             <thead>
               <tr>
                 <th>id</th>
-                <th>Name</th>
+                <th >Name</th>
                 <th>Email</th>
                 <th>Address</th>
                 <th>Phone number</th>
@@ -48,7 +48,7 @@
               <% @users.each do |user| %>
                 <tr>
                   <th scope="row"><%=user.id%></th>
-                    <td><%=user.name%></td>
+                    <td id="name" ><%=user.name%></td>
                     <td><%=user.email%></td>
                     <td><%=user.address%></td>
                     <td><%=user.phone_number%><i class="fas fa-highlighter"></i></td>
@@ -61,7 +61,7 @@
                     <% end %>
                     <% if current_user.role == "admin" && user.role != current_user.role %>
                       <button class="btn btn-danger">
-                        <i class="fa fa-trash"></i>
+                       <i class="fa fa-trash"></i>
                         <%= link_to admin_user_path(user),class:"button", method: :delete do %>
                         <% end %>
                       </button>
@@ -70,27 +70,7 @@
                 </tr>
               <%end%>
             </tbody>
-            <script>
-              $('.btn-danger').click(function(){
-                swal({
-                  title: "Are you sure?",
-                  text: "You will not be able to recover this imaginary file!",
-                  type: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: '#DD6B55',
-                  confirmButtonText: 'Yes, I am sure!',
-                  cancelButtonText: "No, cancel it!",
-                  closeOnConfirm: false,
-                  closeOnCancel: true
-                },
-                function(isConfirm){
-                     if (isConfirm){
-                          $('.button').click();
-                      } 
-                  }
-                )
-              });
-            </script>
+            
           </table>
           <%= will_paginate @users %>
         </div>
@@ -99,4 +79,25 @@
   </div>
 </div>
 
-
+<script>
+ var name = document.getElementById('name').innerText
+  $('.btn-danger').click(function(){
+    swal({
+      title: "Are you sure?",
+      text: "Ban co muon xoa " + name,
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: '#DD6B55',
+      confirmButtonText: 'Yes, I am sure!',
+      cancelButtonText: "No, cancel it!",
+      closeOnConfirm: false,
+      closeOnCancel: true
+    },
+    function(isConfirm){
+          if (isConfirm){
+              $('.button').click();
+          } 
+      }
+    )
+  });
+</script>

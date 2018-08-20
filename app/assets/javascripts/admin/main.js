@@ -16,10 +16,13 @@
 //= require jquery_ujs
 //= require popper
 //= require toastr
+//= require admin/categories
 //= require admin/grasp_mobile_progress_circle.min
 //= require bootstrap-sprockets
 //= require jquery.mCustomScrollbar.concat.min
-//= require admin/front
+//= require admin/front 
+//= require admin/validetta.min
 //= require sweetalert
 //= require turbolinks
 //= require_tree .
+

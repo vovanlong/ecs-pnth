@@ -11,6 +11,7 @@ class Admin::UsersController < Admin::BaseController
       redirect_to admin_users_path
     else
       @user = User.new
+      render 'new'
     end
   end
   
@@ -29,7 +30,7 @@ class Admin::UsersController < Admin::BaseController
   end
   
   def update
-    return render :edit unless @user.update_attributes! user_params
+    return render :edit unless @user.update_attributes user_params
       flash[:success] = "Success update"
       redirect_to admin_users_path
   end
@@ -45,7 +46,6 @@ class Admin::UsersController < Admin::BaseController
     else 
       flash[:danger] = "You not admin"
     end
-      
   end
 
   private

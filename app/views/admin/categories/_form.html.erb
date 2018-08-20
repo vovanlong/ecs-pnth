@@ -1,0 +1,32 @@
+<div class="modal fade seminor-login-modal" data-backdrop="static" id="sem-reg">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body seminor-login-modal-body">
+       <h5 class="modal-title text-center">Category</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+        </button>
+        <div class="card">
+          <div class="card-body">
+            <%= form_for @category ,url: admin_categories_path, class: "form-horizontal" do |f| %>
+              <div class="form-group">
+                <%= f.label :name, "Name Category" %>
+                <%= f.text_field :name, class: 'form-control', placeholder: "Name category parent" %> 
+              </div>
+              <div class="form-group">
+                <%= f.label :description, "Description Category" %>
+                <%= f.text_field :description, class: 'form-control', placeholder: "Description category parent" %> 
+              </div>
+              <div class="form-group">
+                <label>Category Child</label>
+                <%= f.select :parent_id, @cateory_select.list_categories.map {|p| [p.name, p.id]}, {},
+          class: "form-control"  %>
+              </div>
+              <%= f.submit "Create an account", class: "btn btn-primary", value: "Edit User" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

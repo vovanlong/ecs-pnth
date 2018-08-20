@@ -9,7 +9,7 @@
 <section>
   <div class="container-fluid">
     <header>
-      <h1 class="h3 display">Table Users</h1>
+      <h1 class="h3 display">Table Category</h1>
     </header>
   </div>
 </section>
@@ -17,7 +17,13 @@
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
-        <h4>Striped Table</h4>
+        <h4>Category Table</h4>
+      </div>
+      <div class="col-lg-3" style="padding-top:10px">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sem-reg">
+          Open modal
+        </button>
+        <%= render 'form' %>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -35,10 +41,22 @@
               <% @categories.each do |category| %>
                 <tr>
                   <th scope="row"><%=category.id%></th>
-                  <td><%=category.name%></td>
+                  <td id ="name"><%=category.name%></td>
                   <td><%=category.description%></td>
                   <td><%=category.parent_id%></td>
-                  <td><%=category.parent_id%></td>
+                  <td>
+                  <% if current_user.role == "admin" %>
+                    <%= link_to edit_admin_category_path(category), class: "btn btn-primary" do  %>
+                      <i class="fa fa-edit"></i>
+                    <% end %>
+                    
+                      <button class="btn btn-danger">
+                       <i class="fa fa-trash"></i>
+                        <%= link_to admin_category_path(category),class:"button", method: :delete do %>
+                        <% end %>
+                      </button>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
@@ -49,3 +67,26 @@
     </div>
   </div>
 </div>
+<script>
+  var name = document.getElementById('name').innerText
+  console.log("teen category " + name)
+  $('.btn-danger').click(function(){
+    swal({
+    title: "Are you sure?",
+    text: "Ban co muon xoa "+ name,
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes, I am sure!',
+    cancelButtonText: "No, cancel it!",
+    closeOnConfirm: false,
+    closeOnCancel: true
+    },
+    function(isConfirm){
+      if (isConfirm){
+        $('.button').click();
+      } 
+    }
+  )
+  });
+</script>
