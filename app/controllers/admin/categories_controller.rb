@@ -11,8 +11,17 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def create
+    
+    binding.pry
+    
+    parent_id = params[:category][:parent_id]
     @category = Category.new category_params
     if @category.save
+      if parent_id.empty?
+        @category.update_attribute :parent_id ,"0"
+      else
+        @category.update_attribute :parent_id ,parent_id
+      end
       flash[:notice] =" Tạo danh mục thành công "
       redirect_to admin_categories_path
     else
@@ -26,9 +35,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def update
-    
-    binding.pry
-    
     parent_id = params[:category][:parent_id]
     if @category.update_attributes category_params
       if parent_id.empty?
@@ -44,9 +50,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def destroy
-    
-    binding.pry
-    
     if @category.destroy
       flash[:notice] = "delete category success"
     else

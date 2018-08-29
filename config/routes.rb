@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     get "/", to: "dashbroads#index"
     resources :users
     resources :categories
+    resources :products do
+      resources :photos, only: [:create]
+    end
   end
 
   namespace :authentication do

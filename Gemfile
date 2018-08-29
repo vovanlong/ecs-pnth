@@ -16,7 +16,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.1", ">= 4.1.3"
 gem "jquery-rails", "~> 4.3", ">= 4.3.1"
 gem "scrollbar-rails"
-gem "font-awesome-rails"
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem "bcrypt", "~> 3.1", ">= 3.1.11"
 gem "faker", "~> 1.6", ">= 1.6.3"
 gem "pry-rails", "~> 0.3.4"
@@ -24,7 +24,9 @@ gem "will_paginate", "~> 3.1", ">= 3.1.6"
 gem "will_paginate-bootstrap4", "~> 0.2.2"
 gem "toastr-rails"
 gem 'sweetalert-rails'
-
+gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
+gem "figaro"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
