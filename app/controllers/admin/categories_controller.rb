@@ -44,6 +44,9 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def destroy
+    
+    binding.pry
+    
     if @category.destroy
       flash[:notice] = "delete category success"
     else

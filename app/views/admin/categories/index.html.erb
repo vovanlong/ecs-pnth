@@ -40,7 +40,7 @@
             <tbody>
               <% @categories.each do |category| %>
                 <tr>
-                  <th scope="row"><%=category.id%></th>
+                  <th scope="row" id="category_id"><%=category.id%></th>
                   <td id ="name"><%=category.name%></td>
                   <td><%=category.description%></td>
                   <td><%=category.parent_id%></td>
@@ -50,9 +50,9 @@
                       <i class="fa fa-edit"></i>
                     <% end %>
                     
-                      <button class="btn btn-danger">
+                      <button class="btn btn-danger" onclick="deleteSwal(<%=category.id%>,'<%=category.name%>')">
                        <i class="fa fa-trash"></i>
-                        <%= link_to admin_category_path(category),class:"button", method: :delete do %>
+                        <%= link_to admin_category_path(category) ,class:"button-#{category.id}", method: :delete do %>
                         <% end %>
                       </button>
                     <% end %>
@@ -67,26 +67,3 @@
     </div>
   </div>
 </div>
-<script>
-  var name = document.getElementById('name').innerText
-  console.log("teen category " + name)
-  $('.btn-danger').click(function(){
-    swal({
-    title: "Are you sure?",
-    text: "Ban co muon xoa "+ name,
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: '#DD6B55',
-    confirmButtonText: 'Yes, I am sure!',
-    cancelButtonText: "No, cancel it!",
-    closeOnConfirm: false,
-    closeOnCancel: true
-    },
-    function(isConfirm){
-      if (isConfirm){
-        $('.button').click();
-      } 
-    }
-  )
-  });
-</script>

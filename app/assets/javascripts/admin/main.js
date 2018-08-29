@@ -19,6 +19,7 @@
 //= require admin/categories
 //= require admin/grasp_mobile_progress_circle.min
 //= require bootstrap-sprockets
+//= require admin/jquery.cookie
 //= require jquery.mCustomScrollbar.concat.min
 //= require admin/front 
 //= require admin/validetta.min
@@ -26,3 +27,21 @@
 //= require turbolinks
 //= require_tree .
 
+function deleteSwal(id, name){
+  swal({
+    title: "Are you sure?",
+    text: "Ban co muon xoa " + name,
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes, I am sure!',
+    cancelButtonText: "No, cancel it!",
+    closeOnConfirm: false,
+    closeOnCancel: true
+  },
+  function(isConfirm){
+    if(isConfirm){
+        $('.button-'+id).click();
+    }
+  })
+};

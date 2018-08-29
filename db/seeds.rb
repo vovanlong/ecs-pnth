@@ -16,15 +16,15 @@
 #                  role: 2
 # end
 
-User.create!(email: "admin@gmail.com",
-             password: "123123",
-             name: "vovanlong",
-             address: Faker::Address.full_address,
-             phone_number: Faker::PhoneNumber.cell_phone ,
-             role: 0)
+# User.create!(email: "admin@gmail.com",
+#              password: "123123",
+#              name: "vovanlong",
+#              address: Faker::Address.full_address,
+#              phone_number: Faker::PhoneNumber.cell_phone ,
+#              role: 0)
 
-# 20.times do |n|
-#   Category.create name: Faker::Book.author,
-#                   description: Faker::Lorem.paragraph(2, true, 4),
-#                   parent_id: Faker::Number.between(0, 1)
-# end
+20.times do |n|
+  Category.create name: Faker::Book.author,
+                  description: Faker::Lorem.paragraph(2, true, 4),
+                  parent_id: Faker::Number.between(1, 16)
+end
