@@ -23,6 +23,7 @@
 //= require jquery.mCustomScrollbar.concat.min
 //= require admin/front 
 //= require admin/validetta.min
+//= require angular
 //= require sweetalert
 //= require turbolinks
 //= require_tree .

@@ -31,14 +31,48 @@
           </div>
         </div>
         <div class="line"></div>
-          <div class="form-group row">
-            <label class="col-sm-2 form-control-label">Select</label>
-            <div class="col-sm-10 mb-3">
-               <%= f.select :category_id, options_for_select(@category.map {|p| [p.name, p.id]}), {:include_blank => 'None'},
-          class: "form-control"  %>
+          <div class="form-group row" ng-app="myLong" ng-controller="myCtrl">
+            <label class="col-sm-2 form-control-label">Category of Product</label>
+            <div class="col-sm-5 mb-3" >
+            <%# <ul ng-repeat="will in wills">
+              <li>{{will.name}}</li>
+            </ul> %>
+              <select class="form-control" ng-model="value" ng-change="switchLanguage()" >
+                <option value="0" >None</option>
+                <option ng-repeat="long in longs" value="{{long.id}}">{{long.name}}</option>
+              </select>
+            </div>
+            <div class="col-sm-5 mb-3">
+              <select class="form-control" name="product[category_id]" id="product_category_id"">
+                <option ng-repeat="will in wills" value="{{will.id}}">{{will.name}}</option>
+              </select>
             </div>
           </div>
+          <%= f.submit "Create an account", class: "btn btn-primary", value: "Edit User" %>
       <% end %>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  var app = angular.module("myLong",[]);
+  app.controller("myCtrl", function($scope,$http){
+    $http.get("http://localhost:3000/api/v1/categories")
+    .then(function(response){
+      $scope.longs = response.data.category
+      console.log($scope.longs)
+      <%# $scope.wills = response.data.category
+      console.log($scope.wills) %>
+    })
+    $scope.value = '0';
+    $scope.switchLanguage = function(){
+      console.log("vovanlong"+$scope.value)
+      $http.get("http://localhost:3000/api/v1/categories/"+$scope.value)
+      .then(function(res){
+        $scope.wills = res.data.category_id
+      console.log($scope.wills)
+      })
+    }
+  });
+</script>
+

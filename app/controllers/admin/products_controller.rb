@@ -6,7 +6,6 @@ class Admin::ProductsController < Admin::BaseController
   
   def new
     
-    binding.pry
     
     @product = Product.new
     @category = Category.list_categories
@@ -14,6 +13,9 @@ class Admin::ProductsController < Admin::BaseController
   
   
   def create
+    
+    binding.pry
+    
     @product = current_user.products.build(product_params)
     if @product.save!
       if params[:images]
