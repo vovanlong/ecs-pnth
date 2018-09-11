@@ -92,6 +92,8 @@ GEM
     crass (1.0.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    dropzonejs-rails (0.8.2)
+      rails (> 3.1)
     erubi (1.7.1)
     execjs (2.7.0)
     faker (1.9.1)
@@ -258,6 +260,7 @@ DEPENDENCIES
   chromedriver-helper
   cloudinary
   coffee-rails (~> 4.2)
+  dropzonejs-rails (~> 0.8.2)
   faker (~> 1.6, >= 1.6.3)
   figaro
   font-awesome-rails (~> 4.7, >= 4.7.0.1)

@@ -10,8 +10,8 @@
             <%= form_for(@user, url: admin_users_path) do |f| %>
               <%= render 'shared/error_messages' %>
               <div class="form-group">
-                <%= f.label :email %>
-                <%= f.text_field :email, class: 'form-control', placeholder: "Email Address", data: {validetta: "required"} %> 
+                <%= f.label :email, "Email User",id: "email" %>
+                <%= f.text_field :email, class: 'form-control', placeholder: "Email Address", data: {validetta: "required,email"} %> 
               </div>
 
               <div class="form-group">
@@ -44,17 +44,7 @@
         </div>
       </div>
       <script>
-        $(document).ready(function(){
-            $("form").validetta({
-              bubblePosition: 'bottom',
-              bubbleGapTop: 10,
-              bubbleGapLeft: -5,
-              realTime : true,
-            },
-            {
-              required  : 'not requied'
-            });
-          });
+        
       </script>
     </div>
   </div>

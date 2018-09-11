@@ -2,16 +2,16 @@
   <%= render 'shared/error_messages' %>
   <div class="form-group">
     <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control', placeholder: "Email Address" %> 
+    <%= f.text_field :email, class: 'form-control', placeholder: "Email Address",data: {validetta: "required,email"}  %> 
   </div>
 
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control', placeholder: "Name" %> 
+    <%= f.text_field :name, class: 'form-control', placeholder: "Name", data:{validetta: "required"} %> 
   </div>
   <div class="form-group">
    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control', placeholder: "password" %> 
+    <%= f.password_field :password, class: 'form-control', placeholder: "password",data: {validetta: "required"}  %> 
   </div>
 
   <div class="form-group">
@@ -31,3 +31,6 @@
 
   <%= f.submit "Create an account", class: "btn btn-primary", value: "Edit User" %>
 <% end %>
+ <script>
+       
+</script>

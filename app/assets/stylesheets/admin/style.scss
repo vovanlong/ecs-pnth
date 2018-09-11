@@ -5,6 +5,7 @@
 @import "toastr";
 @import "sweetalert";
 @import "validetta.min";
+@import "dropzone/dropzone";
 /*
 ==========================================================
 ==========================================================
@@ -21,7 +22,12 @@ https://bootstrapious.com/p/bootstrap-4-dashboard
 *     GENERAL
 * ==========================================================
 */
-
+.invalid-feedback{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
 .text-bold {
     font-weight: 700;
   }
@@ -3068,4 +3074,59 @@ https://bootstrapious.com/p/bootstrap-4-dashboard
   padding-left: 150px;
 }
 
+// mycustom
 
+.upload-photos-icon:hover{
+  cursor: pointer;
+}
+
+.dz.preview.dz-image-preview{
+  margin: 2px;
+}
+
+.dz-image{
+  border-radius: 0px !important;
+  img{
+    width: 100%;
+  }
+}
+.core-sprite {
+  background-image: image-url("core-sprite-2x.png");
+  background-size: 405px 379px;
+  background-repeat: no-repeat;
+}
+
+.hide-text {
+  display: block;
+  overflow: hidden;
+  text-indent: 110%;
+  white-space: nowrap;
+}
+.dz-remove{
+  @extend .core-sprite;
+  @extend .hide-text;
+  position: absolute;
+  top: 9px;
+  right: 5px;
+  z-index: 20;
+  width: 18px;
+  height: 18px;
+  background-position: -386px -25px;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s liner;
+  transition: opacity 0.2s liner;
+}
+
+.dropzone .dz-preview:hover .dz-remove {
+  opacity: 1;
+}
+
+.upload-photos-icon {
+  height: 120px;
+  width: 120px;
+  border: 2px dashed #dddfe2;
+  border-radius: 2px;
+  padding: 48px;
+  display: inline-block;
+  margin: 2px;
+}

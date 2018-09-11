@@ -1,0 +1,90 @@
+<div  ng-app="myLong" ng-controller="myCtrl">
+  <%=form_for [:admin,@product], :html => {:multipart=>true,:name=>"myForm", :class=>"form-horizontal dropzone upload-images p-0 border-0"} do |f|%>
+  <div class="form-group row">
+    <%= f.label :name, "Name Product", class: "col-sm-2 form-control-label" %>
+    <div class="col-sm-10">
+      <input class="form-control" type="text"   name="name"   id="product_name" placeholder="name" ng-value="name" ng-model="product.name" ng-required="true"  value="<%=@product.name%>" >
+      <div ng-show="myForm.name.$error.required && myForm.name.$touched"" style="color: #dc3545; width: 100%; margin-top: .25rem; font-size: 80%">
+        Please provide your name.
+      </div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="form-group row">
+    <%= f.label :description, "Description Product", class: "col-sm-2 form-control-label" %>
+    <div class="col-sm-10">
+      <textarea class="form-control" id="message_area" cols="96" rows="5" name="description" placeholder="description" ng-model="product.description" ng-required="true" ng-value="description"><%=@product.description%></textarea>
+      <div ng-show="myForm.description.$invalid && myForm.description.$touched" style="color: #dc3545; width: 100%; margin-top: .25rem; font-size: 80%">
+        Please provide your name.
+      </div>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="form-group row">
+    <%= f.label [:price, :quantity], "Price/Quantity", class: "col-sm-2 form-control-label" %>
+    <div class="col-md-5 input-group">
+        <input class="form-control" placeholder="Price" type="text" name="price" id="product_price"  ng-value="<%=@product.price%>" ng-model="product.price" ng-required="true">
+        <div ng-show="myForm.price.$invalid && myForm.price.$touched" style="color: #dc3545; width: 100%; margin-top: .25rem; font-size: 80%">
+            Please fill out this  field <em>price</em>  as it is required.
+        </div>
+      </div>
+      <div class="line"></div>
+      <div class="col-md-5 input-group">
+          <input class="form-control" placeholder="Quantity" type="text" name="quantity" ng-value="quantity"  value="<%=@product.quantity%>" id="product_quantity"  ng-model="product.quantity" ng-pattern="/^[0-9]{1,7}$/" ng-required="true">
+        <div ng-show="myForm.quantity.$invalid && myForm.quantity.$touched && myForm.quantity.$error.required" style="color: #dc3545; width: 100%; margin-top: .25rem; font-size: 80%">
+            Please fill out this  field <em>quantity</em>  as it is required.
+        </div>
+        <div ng-show="myForm.quantity.$error.pattern" style="color: #dc3545; width: 100%; margin-top: .25rem; font-size: 80%">
+          Please provide your number.
+        </div>
+    </div>
+  </div>
+  <div class="line"></div>
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Category of Product</label>
+      <div class="col-sm-5 mb-3" >
+    <%# <ul ng-repeat="will in wills">
+        <li>{{will.name}}</li>
+    </ul> %>
+        <select class="form-control" ng-model="value" ng-change="switchLanguage()" >
+          
+          <option ng-repeat="long in longs"  value="{{long.id}}">{{long.name}}{{setSelected(long.id)}}</option>
+          <option value="0" >None</option>
+        </select>
+      </div>
+      <div class="col-sm-5 mb-3">
+        <select class="form-control" name="category_id" id="product_category_id" ng-model="product.category_id" ng-required="true">
+          <option value="0" >None</option>
+          <option ng-repeat="will in wills" value="{{will.id}}">{{will.name}}</option>
+        </select>
+        <div ng-show="myForm.category_id.$invalid && myForm.category_id.$touched" style="color: #dc3545; width: 100%; margin-top: .25rem; font-size: 80%">
+            Please fill out this  field <em>category</em>  as it is required.
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="form-group row">
+      <label class= "col-sm-2 form-control-label">File Image</label>
+      <div class="col-sm-10">
+        <div class="fallback">
+          <%= file_field_tag "images[]", type: :file, multiple: true %>
+        </div>
+        <div class="dz-message m-0"></div>
+        <div class="dropzone-previews mb-3">
+          <div class="upload-photos-icon">
+            <i class="fa fa-plus" aria-hidden="true" style="color:#dddfe2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      
+      <%@product.photos.each do |photo|%>
+        <%= image_tag photo.image.url(:standard)%>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <input type="submit" name="commit" value="Create an Product" class="btn btn-primary form-control" data-disable-with="Create an Product">
+    </div>
+  <% end %>
+</div>

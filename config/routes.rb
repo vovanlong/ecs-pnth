@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :categories
+      get '/category/:id', to: 'categories#selected'
     end
   end
 end

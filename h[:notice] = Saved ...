@@ -1,0 +1,22 @@
+
+[1mFrom:[0m /home/long-pnth/Desktop/ecommerce-long/ecommerce-pnth/app/controllers/admin/products_controller.rb @ line 24 Admin::ProductsController#create:
+
+    [1;34m15[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m16[0m:   @product = current_user.products.build(product_params)
+    [1;34m17[0m:   [32mif[0m @product.save
+    [1;34m18[0m:     [32mif[0m params[[33m:images[0m]
+    [1;34m19[0m:       params[[33m:images[0m].each [32mdo[0m |img|
+    [1;34m20[0m:         @product.photos.create([35mimage[0m: img[[1;34m1[0m])
+    [1;34m21[0m:       [32mend[0m
+    [1;34m22[0m:     [32mend[0m
+    [1;34m23[0m: 
+ => [1;34m24[0m:     binding.pry
+    [1;34m25[0m:     
+    [1;34m26[0m:     flash[[33m:notice[0m] = [31m[1;31m"[0m[31mSaved ...[1;31m"[0m[31m[0m
+    [1;34m27[0m:     redirect_to admin_users_path
+    [1;34m28[0m:     
+    [1;34m29[0m:   [32melse[0m 
+    [1;34m30[0m:     redirect_to admin_users_path
+    [1;34m31[0m:   [32mend[0m
+    [1;34m32[0m: [32mend[0m
+

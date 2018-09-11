@@ -28,6 +28,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem "figaro"
 gem 'angularjs-rails', '~> 1.6', '>= 1.6.8'
+gem 'dropzonejs-rails', '~> 0.8.2'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -1,37 +1,45 @@
 class Admin::ProductsController < Admin::BaseController
+  before_action :load_product, only: [:edit]
   def index
-    @products = Product.all.limit(10).includes(:photos)
+    @products = Product.joins(:photos)
     
   end
   
   def new
-    
-    
     @product = Product.new
-    @category = Category.list_categories
+    @category = Category.new
   end
   
+  def edit
+  end
   
   def create
-    
-    binding.pry
-    
+    name = params[:name]
     @product = current_user.products.build(product_params)
-    if @product.save!
+    if @product.save
       if params[:images]
         params[:images].each do |img|
-          @product.photos.create(image: img)
-        end 
+          @product.photos.create(image: img[1])
+        end
       end
-    else 
+      flash[:notice] = "Saved ..."
     end
+  end
+
+  def update
     
   end
+  
   
   private
 
   def product_params
-    params.require(:product).permit(:name, :description,:price,:quantity,:category_id)
+    params.permit(:name, :description,:price,:quantity,:category_id)
   end
+
+  def load_product
+    @product = Product.find_by_id params[:id]
+  end
+  
   
 end
