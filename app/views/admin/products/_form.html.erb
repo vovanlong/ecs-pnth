@@ -78,11 +78,40 @@
       </div>
     </div>
     <div class="form-group row">
+      <label class= "col-sm-2 form-control-label">File Image</label>
+      <div class="col-sm-10" >
+      <% if @product.photos.size == 1 %>
+        <%= image_tag @product.photos.first.image.url(:standard),id:"image-form"%>
+      <%else%>
+        <div class="carousel slide" style="width:350px;height:450px" data-ride="carousel" id="carousel-product-<%=@product.id%>">
+          <div class="carousel-inner">
+            <% @product.photos.each do |photo| %>
+              <% if photo == @product.photos.first%>
+                <div class="carousel-item active">
+              <% else %>     
+                <div class="carousel-item">
+              <% end %>
+                <%= image_tag photo.image.url(:standard), class: "card-img-top" %>
+              </div>
+            <% end %>
+        </div>  
+        <a class="carousel-control-prev" href="#carousel-product-<%= @product.id %>" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-product-<%= @product.id %>" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>   
+      </div> 
+      <% end %>
+      </div>
       
-      <%@product.photos.each do |photo|%>
+    </div>  
+   <!--  <%@product.photos.each do |photo|%>
         <%= image_tag photo.image.url(:standard)%>
       <% end %>
-    </div>
+    </div>--> 
     <div class="form-group">
       <input type="submit" name="commit" value="Create an Product" class="btn btn-primary form-control" data-disable-with="Create an Product">
     </div>
