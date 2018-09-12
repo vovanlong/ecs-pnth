@@ -1,0 +1,24 @@
+
+[1mFrom:[0m /home/long-pnth/Desktop/ecommerce-long/ecommerce-pnth/app/controllers/admin/products_controller.rb @ line 30 Admin::ProductsController#update:
+
+    [1;34m28[0m: [32mdef[0m [1;34mupdate[0m
+    [1;34m29[0m: 
+ => [1;34m30[0m:   binding.pry
+    [1;34m31[0m:   name = params[[33m:name[0m]
+    [1;34m32[0m:   @product.update_attributes([33m:name[0m => name)
+    [1;34m33[0m:   description = params[[33m:description[0m]
+    [1;34m34[0m:   price = params[[33m:price[0m]
+    [1;34m35[0m:   quantity = params[[33m:quantity[0m]
+    [1;34m36[0m:   category_id = params[[33m:category_id[0m]
+    [1;34m37[0m:   user_id = current_user.id
+    [1;34m38[0m:   [1;34m# @product.user_id = 4;[0m
+    [1;34m39[0m: 
+    [1;34m40[0m:   [32mif[0m @product.update_attributes!([33m:name[0m => name, [33m:description[0m => description, [33m:price[0m => price, [33m:quantity[0m => quantity, [33m:category_id[0m => category_id, [33m:user_id[0m =>user_id)
+    [1;34m41[0m:     [32mif[0m params[[33m:images[0m]
+    [1;34m42[0m:       
+    [1;34m43[0m:     [32mend[0m
+    [1;34m44[0m:   [32melse[0m
+    [1;34m45[0m: 
+    [1;34m46[0m:   [32mend[0m
+    [1;34m47[0m: [32mend[0m
+
