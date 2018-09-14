@@ -5,11 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'home/style', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/main', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render 'layouts/shared/header' %>
     <% if flash.any? %>
       <script type="text/javascript">
         <% flash.each do |key, value| %>
@@ -19,5 +20,6 @@
       </script>
     <% end %>
     <%= yield %>
+    <%= render 'layouts/shared/footer' %>  
   </body>
 </html>

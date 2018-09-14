@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  root to: "home_pages#index"
+
   namespace :authentication do
     get 'sessions/new'
   end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/signup", to: "authentication/auths#new"
   get    '/login',   to: 'authentication/sessions#new'

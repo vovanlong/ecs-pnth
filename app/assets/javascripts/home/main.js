@@ -17,5 +17,11 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require now-ui-kit.min
+//= require home/now-ui-kit.min
+//= require home/plugins/bootstrap-datetimepicker
+//= require home/plugins/bootstrap-selectpicker
+//= require home/plugins/bootstrap-switch
+//= require home/plugins/bootstrap-tagsinput
+//= require home/plugins/moment.min
+//= require home/plugins/nouislider.min
 //= require_tree .
