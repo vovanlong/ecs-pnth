@@ -1761,8 +1761,8 @@
   
   @font-face {
     font-family: Nucleo Outline;
-    src: url(../fonts/nucleo-outline.eot);
-    src: url(../fonts/nucleo-outline.eot) format("embedded-opentype"), url(../fonts/nucleo-outline.woff2) format("woff2"), url(../fonts/nucleo-outline.woff) format("woff"), url(../fonts/nucleo-outline.ttf) format("truetype");
+    src: image-url('fonts/nucleo-outline.eot');
+    src: image-url('fonts/nucleo-outline.eot') format("embedded-opentype"), image-url('fonts/nucleo-outline.woff2') format("woff2"), image-url('fonts/nucleo-outline.woff') format("woff"), image-url('fonts/nucleo-outline.ttf') format("truetype");
     font-weight: 400;
     font-style: normal;
   }

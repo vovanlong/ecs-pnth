@@ -1,3 +1,17 @@
 @import "bootstrap";
 @import "now-ui-kit";
 @import "font-awesome";
+
+// custom css
+
+#image-header1{
+  background-image: image-url('bg20.jpg');
+}
+
+#image-header2{
+    background-image: image-url('bg28.jpg');
+  }
+
+  #image-header3{
+    background-image: image-url('bg27.jpg');
+  }

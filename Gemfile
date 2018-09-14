@@ -30,6 +30,8 @@ gem "figaro"
 gem 'angularjs-rails', '~> 1.6', '>= 1.6.8'
 gem 'dropzonejs-rails', '~> 0.8.2'
 
+gem 'active_model_serializers', '~> 0.10.7'
+
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end

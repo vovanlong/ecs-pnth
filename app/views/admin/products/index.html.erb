@@ -64,9 +64,9 @@
                       <% end %>
                     </td>
                     <td>
-                      <%= link_to edit_admin_product_path(product), class: "btn btn-primary" do  %>
-                        <i class="fa fa-edit"></i>
-                      <% end %>
+                    <a href="#" class="btn btn-primary" onclick="return theFunction(<%=product.id%>);">
+                      <i class="fa fa-edit"></i>
+                    </a>
                     </td>
                   </tr>
                 <% end %>
@@ -79,4 +79,9 @@
   </div>
 </div>
 </section>
+<script type="text/javascript">
+    function theFunction (id) {
+      window.location.replace("/admin/products/"+id+"/edit");
+    }
+</script>
 

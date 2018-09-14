@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'home/main', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body ng-app="navbarApp">
     <%= render 'layouts/shared/header' %>
     <% if flash.any? %>
       <script type="text/javascript">

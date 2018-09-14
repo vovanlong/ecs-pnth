@@ -21,6 +21,21 @@ module Api
         render json: { status: "success", category_id: @category_selected }
       end
       
+
+      def category_home
+        @category = Category.all.where('parent_id = ?', 0)
+        category_serializable =  parse_json @category
+        render json: { status: "success", category: category_serializable }
+      end
+
+      def categoryById
+        
+        id = params[:id]
+        @category = Category.all.where('parent_id = ?', id)
+        categoryid_serializable = parse_json @category
+        render json: {status: "success", categoryid: categoryid_serializable }
+      end
+      
     end 
   end
 end

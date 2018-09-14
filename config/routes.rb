@@ -27,7 +27,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :categories
+      resources :products
+      get '/products/popular', to: 'products#popular'
       get '/category/:id', to: 'categories#selected'
+      get '/home/categories', to: 'categories#category_home'
+      get '/home/categories/:id', to: 'categories#categoryById'
+
     end
   end
 end

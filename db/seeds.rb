@@ -39,9 +39,9 @@ Category.create(name: "Beauty & Health",
                 description: Faker::Lorem.paragraph(2, true, 4),
                 parent_id: 0)
                 
-Category.create(name: "Clothing, Shoes & Jewelry",
-                description: Faker::Lorem.paragraph(2, true, 4),
-                parent_id: 0)
+# Category.create(name: "Clothing, Shoes & Jewelry",
+#                 description: Faker::Lorem.paragraph(2, true, 4),
+#                 parent_id: 0)
 
 Category.create(name: "Books & Audible",
                 description: Faker::Lorem.paragraph(2, true, 4),
@@ -53,14 +53,15 @@ Category.create(name: "Books & Audible",
                   parent_id: Faker::Number.between(1, 6)
 end
 
-# 10.times do |n|
-#   Product.create name: Faker::Name.name,
-#                  description: Faker::Lorem.paragraph_by_chars(256, false),
-#                  price: Faker::Number.decimal(2),
-#                  quantity: Faker::Number.between(1, 50),
-#                  avg_star: Faker::Number.between(1, 10),
-#                  category_id: Faker::Number.between(0, 10)
-# end
+10.times do |n|
+  Product.create name: Faker::Name.name,
+                 description: Faker::Lorem.paragraph_by_chars(256, false),
+                 price: Faker::Number.decimal(2),
+                 quantity: Faker::Number.between(1, 50),
+                 avg_star: Faker::Number.between(1, 10),
+                 category_id: Faker::Number.between(0, 10),
+                 user_id: 41
+end
 
 # 10.times do |n|
 #   Photo.create image: Faker::Avatar.image("my-own-slug", "50x50"),

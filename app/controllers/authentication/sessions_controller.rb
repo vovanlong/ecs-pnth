@@ -6,9 +6,15 @@ class Authentication::SessionsController < Authentication::BaseController
 
   def create
     if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to admin_path
+      if @user.role == "admin" || "employees"
+        log_in @user
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        redirect_to admin_path
+      else
+        log_in @user
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        redirect_to root_path
+      end
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
@@ -27,5 +33,4 @@ class Authentication::SessionsController < Authentication::BaseController
     def load_user
       @user = User.find_by email: params[:session][:email].downcase
     end
-
 end

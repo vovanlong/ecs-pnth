@@ -1,1 +1,0 @@
-.update_attributes! :name \= :description \= :price \= :quantity \= :category_id \= :user_id \=
