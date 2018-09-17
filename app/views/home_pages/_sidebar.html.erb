@@ -1,0 +1,24 @@
+<div class="col-md-3 ml-auto mr-auto" ng-controller="navbarController">
+  <div id="accordion">
+    <div class="card-body">
+      <h4 class="h2">Danh Muc Bán Hàng</h4>
+        <div class="card card-refine card-plain" ng-repeat="category in categories">
+          <div class="card-header" role="tab" id="heading{{category.id}}">
+            <h6>
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{category.id}}" aria-expanded="false" aria-controls="collapse{{category.id}}" ng-click="myCategory(category.id)">
+                {{category.name | limitTo: 21}}
+                <i class="now-ui-icons arrows-1_minimal-down"></i>
+              </a>
+            </h6>
+          </div>
+        <div id="collapse{{category.id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{category.id}}">
+          <div class="card card-body dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="form-check" ng-repeat="y in categoriesId">
+              <a href="#" class="dropdown-item" ng-click="clickLink(y.id)"> {{y.name}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

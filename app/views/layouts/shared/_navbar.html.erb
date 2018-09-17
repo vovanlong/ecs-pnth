@@ -20,7 +20,7 @@
 			      <p>{{x.name}}</p>
 		      </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
-            <a class="dropdown-item" ng-repeat="y in categoriesId" href="#">
+            <a class="dropdown-item" ng-repeat="y in categoriesId" href="#{{y.id}}" ng-click="clickLink(y.id)">
               <i class="fa fa-cubes" aria-hidden="true"></i>
                 {{y.name}}
             </a>

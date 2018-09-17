@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
   before_action :load_product, only: [:edit, :update]
   
   def index
-    @products = Product.includes(:photos)
+    @products = Product.includes(:photos).paginate(:page => params[:page]).order('created_at DESC')
   end
   
   def new
@@ -39,8 +39,9 @@ class Admin::ProductsController < Admin::BaseController
           @product.photos.create(image: img[1])
         end
       end
+      redirect_to admin_products_path
     else
-
+      render 'edit'
     end
   end
   

@@ -19,6 +19,7 @@
             <h4>Striped table with hover effect</h4>
         </div>
         <div class="card-body">
+        <%= will_paginate @products %>
           <div class="table-responsive">
             <table class="table table-striped table-hover">
               <thead>
@@ -72,9 +73,10 @@
                 <% end %>
                 </tbody>
             </table>
-            </div>
+          </div>
+           <%= will_paginate @products %>
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </div>

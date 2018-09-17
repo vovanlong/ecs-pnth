@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_062554) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
+    t.text "preview"
     t.text "description"
     t.float "price"
     t.integer "quantity"

@@ -1,0 +1,43 @@
+<div class="blogs-5" data-background-color="gray">
+  <div class="container" ng-controller="newProductController">
+    <div class="row">
+
+      <div class="col-md-10 ml-auto mr-auto">
+        <h2 class="title">Sản Phẩm Mới Nhất</h2>
+          <div class="row">
+
+            <div class="col-md-4" ng-repeat="product in newProduct">
+              <div class="card card-blog">
+                <div class="card-image">
+                  <a href="#pablo">
+                    <img class="img rounded" src="{{product.first_photo.image.url}}"">
+                  </a>
+                </div>
+
+                <div class="card-body">
+                  <h6 class="category text-primary">{{product.category.name}}</h6>
+
+                  <h5 class="card-title">
+                   {{product.name}}
+                  </h5>
+                  <p class="card-description">
+                    {{product.preview}}
+                  </p>
+                  <div class="card-footer">
+                    <div class="author">
+                    <img src="https://images.unsplash.com/photo-1535551951406-a19828b0a76b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=39c2d9cc5f529436519f8588c3df83fd&auto=format&fit=crop&w=1346&q=80" alt="..." class="avatar img-raised">
+                    <span>{{product.user.name}}</span>
+                  </div>
+                  <div class="stats stats-right">
+                    <i class="now-ui-icons tech_watch-time"></i> {{product.convert_clock}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

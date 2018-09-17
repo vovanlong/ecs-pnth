@@ -1,0 +1,52 @@
+<!--     *********     BLOGS 3      *********      -->
+<div class="blogs-3">
+  <div class="container">
+    <div class="row">
+      <%= render 'sidebar' %>
+      <div class="col-md-9 ml-auto mr-auto">
+        <h2 class="title"><%=@category.name%></h2>
+        <br />
+        <%@products.each do |f|%>
+        <div class="card card-plain card-blog">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card-image">
+               
+               <% if f.photos.first %>
+                 <img class="img img-raised rounded" src="<%=f.photos.first.image.url(:standard)%>" />
+               <%else%>
+                   <img class="img img-raised rounded" src="https://images.unsplash.com/photo-1517329782449-810562a4ec2f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=536829a9eb16ff242b5d76810e48f55d&auto=format&fit=crop&w=1344&q=80" />
+               <% end %>
+               
+                
+              
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h3 class="card-title">
+                <a href="#pablo"><%=f.name%></a>
+              </h3>
+              <p class="card-description">
+                <%=truncate(f.description, length:900)%>..
+              </p>
+              <a href="#product/<%=f.id%>" class="btn btn-primary" onclick="return theFunction(<%=f.id%>);"  data-toggle="tooltip" data-placement="right" title="Xem chi tiết <%=f.name%>"> Buy </a>
+              <div class="card-product price-container">
+                <span class="col-lg-6 col-md-4 pull-right prices"><span>&#36;</span><%=f.price%></span>
+                <div class="col-lg-6 col-md-8 pull-left prices">
+                  Lượt views: 300000
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%end%>
+        <%= will_paginate @products %>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    function theFunction (id) {
+      window.location.replace("/product/"+id);
+    }
+</script>

@@ -15,12 +15,13 @@
 //= require jquery3
 //= require jquery_ujs
 //= require popper
+//= require bootstrap-sprockets
+//= require admin/grasp_mobile_progress_circle.min
+//= require admin/jquery.cookie
+//= require Chart.min
 //= require toastr
 //= require admin/categories
 //= require dropzone
-//= require admin/grasp_mobile_progress_circle.min
-//= require bootstrap-sprockets
-//= require admin/jquery.cookie
 //= require jquery.mCustomScrollbar.concat.min
 //= require admin/front 
 //= require admin/validetta.min

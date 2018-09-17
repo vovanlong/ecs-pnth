@@ -17,10 +17,10 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require home/now-ui-kit.min
 //= require angular
 //= require angular-animate
 //= require angular-resource
-//= require home/now-ui-kit.min
 //= require home/plugins/bootstrap-selectpicker
 //= require home/plugins/bootstrap-switch
 //= require home/plugins/bootstrap-tagsinput
