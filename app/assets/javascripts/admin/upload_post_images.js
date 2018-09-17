@@ -29,6 +29,7 @@ $(document).ready(function(){
 
       this.on("errormultiple", function(files, response){
         toastr.error(response);
+        window.location.replace("/admin/products");
       });
     }
   })

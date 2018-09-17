@@ -1,11 +1,12 @@
-module Api
-  module V1
-    class ProductsController < ApplicationController
-        
-      def popular
-        render json: {success: "success"}
-      end
-      
+class Api::V1::ProductsController < ApplicationController
+    
+    def popular
+      @product = Product.all.where('avg_star >= ?',8)
+      product_serializable = parse_json @product
+        render json: {product_popular: product_serializable}
     end
-  end
+    
+    def index
+    end
+    
 end

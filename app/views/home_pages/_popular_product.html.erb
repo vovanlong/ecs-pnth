@@ -1,0 +1,38 @@
+<div class="row" ng-controller="popularProductController">
+      <%= render 'sidebar' %>
+
+  <div class="col-md-9 ml-auto mr-auto">
+    <div class="container row">
+      <div class="col-lg-4 col-md-6" ng-repeat="product in popularProducts | limitTo: limit">
+        <div class="card card-product card-plain">
+          <div class="card-image" ng-init="picture = product.first_photo.image.standard.url">
+            <a href="#">
+              <img ng-src="{{picture}}" alt="...">
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="#">
+              <h4 class="card-title">{{product.name}}</h4>
+            </a>
+            <p class="card-description" style="text-align: justify; text-justify: inter-word;">
+              {{product.description | limitTo: 60}}
+            </p>
+            <div class="card-footer">
+              <div class="price-container">
+                <span class="prices" > <span>&#36;</span> {{product.price}}</span>
+                
+              </div>
+              <div class="col-lg-6 col-md-8 pull-right price-container" id="star"  ng-init="star = product.avg_star / 2">
+                <i style="color:#f96332" ng-repeat="n in starnone(star,5)" class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+                <i style="color:#f96332" ng-repeat="n in range(star,5)" class="fa fa-star fa-2x" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end card -->
+      </div>
+      <div class="col-md-3 ml-auto mr-auto" >
+        <button rel="tooltip" class="btn btn-primary btn-round" ng-click="loadMore()">Load more...</button>
+      </div>
+    </div>
+  </div>
+</div>
