@@ -5,7 +5,8 @@ module Api
      before_action :load_order, only: :create
       def index
         @carts = OrderDetail.all.where('user_id = ?', request.headers["Authorization"])
-        render json: {cart: @carts}
+        carts_serializer = parse_json @carts
+        render json: {cart: carts_serializer}
       end
       
       def create
