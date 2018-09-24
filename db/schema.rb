@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_31_062554) do
+ActiveRecord::Schema.define(version: 2018_09_23_132234) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 2018_08_31_062554) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["order_id"], name: "index_order_details_on_order_id"
     t.index ["product_id"], name: "index_order_details_on_product_id"
+    t.index ["user_id"], name: "index_order_details_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -63,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_08_31_062554) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
+    t.text "preview"
     t.text "description"
     t.float "price"
     t.integer "quantity"
@@ -106,7 +109,11 @@ ActiveRecord::Schema.define(version: 2018_08_31_062554) do
     t.integer "role", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "{:foreign_key=>true}_id"
+    t.integer "order_details_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["order_details_id"], name: "index_users_on_order_details_id"
+    t.index ["{:foreign_key=>true}_id"], name: "index_users_on_{:foreign_key=>true}_id"
   end
 
 end

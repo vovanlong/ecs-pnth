@@ -11,8 +11,11 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card-image">
-               
-                <img class="img img-raised rounded" src="<%=f.photos.first.image.url(:standard)%>" />
+               <% if f.photos.first %>
+                 <img class="img img-raised rounded" src="<%=f.photos.first.image.url(:standard)%>" />
+               <%else%>
+                   <img class="img img-raised rounded" src="https://images.unsplash.com/photo-1517329782449-810562a4ec2f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=536829a9eb16ff242b5d76810e48f55d&auto=format&fit=crop&w=1344&q=80" />
+               <% end %>
               </div>
             </div>
             <div class="col-md-8">

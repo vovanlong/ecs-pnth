@@ -2,6 +2,7 @@
       <%= render 'sidebar' %>
 
   <div class="col-md-9 ml-auto mr-auto">
+   <h2 class="">Sản Phẩm bán nhiều nhất</h2>
     <div class="container row">
       <div class="col-lg-4 col-md-6" ng-repeat="product in popularProducts | limitTo: limit">
         <div class="card card-product card-plain">
@@ -15,14 +16,14 @@
               <h4 class="card-title">{{product.name}}</h4>
             </a>
             <p class="card-description" style="text-align: justify; text-justify: inter-word;">
-              {{product.description | limitTo: 60}}
+              {{product.preview}}
             </p>
             <div class="card-footer">
               <div class="price-container">
                 <span class="prices" > <span>&#36;</span> {{product.price}}</span>
                 
               </div>
-              <div class="col-lg-6 col-md-8 pull-right price-container" id="star"  ng-init="star = product.avg_star / 2">
+              <div class="col-lg-6 col-md-8 pull-right price-container" id="star"  ng-init="star = product.avg_star">
                 <i style="color:#f96332" ng-repeat="n in starnone(star,5)" class="fa fa-star-o fa-2x" aria-hidden="true"></i>
                 <i style="color:#f96332" ng-repeat="n in range(star,5)" class="fa fa-star fa-2x" aria-hidden="true"></i>
               </div>

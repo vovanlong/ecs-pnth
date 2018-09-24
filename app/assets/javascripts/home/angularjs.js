@@ -15,7 +15,8 @@ HomeApp.controller('navbarController', function($scope,$http){
       };
     });
 });
-HomeApp.controller('popularProductController',function($scope,$http,){
+
+HomeApp.controller('popularProductController',function($scope,$http){
   $http.get("http://localhost:3000/api/v1/home/products/popular")
   .then(function(res){
     $scope.popularProducts = res.data.product_popular
@@ -48,5 +49,32 @@ HomeApp.controller('popularProductController',function($scope,$http,){
       $scope.limit = 3;
      }
     };
+  });
+});
+
+HomeApp.controller('detailController',function($scope,$http){
+  var full_url = document.URL;
+  var url_array = full_url.split('/')
+  var id_product = url_array[url_array.length-1];
+  $http.get("http://localhost:3000/api/v1/home/products/detail/"+id_product)
+  .then(function(res){
+    $scope.detail = res.data.product_detail
+    
+    $scope.picture = res.data.product_detail.photos
+    console.log($scope.picture)
+    $scope.active = function(v){
+      if (v == 0) {
+        return 'active'
+      } else {
+        return ''
+      }
+    };
+  });
+});
+
+HomeApp.controller('newProductController',function($scope,$http){
+  $http.get('http://localhost:3000/api/v1/home/products/new')
+  .then(function(res){
+   $scope.newProduct = res.data.product
   });
 });
