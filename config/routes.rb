@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/signup", to: "authentication/auths#new"
-  get    '/login',   to: 'authentication/sessions#new'
+  get  '/login',   to: 'authentication/sessions#new'
   post   '/login',   to: 'authentication/sessions#create'
-  delete '/logout',  to: 'authentication/sessions#destroy'
+  get '/logout',  to: 'authentication/sessions#destroy'
   namespace :admin do
     get "/", to: "dashbroads#index"
     resources :users
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     namespace :v1, defaults: {format: :json} do
       resources :categories
       # resources :products
+      resources :carts
       get 'home/products/new', to: 'products#product_new'
       get '/category/:id', to: 'categories#selected'
       get '/home/categories', to: 'categories#category_home'
