@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery except: :index
+  protect_from_forgery unless: -> { request.format.json? }
   include SerializableResource
   include SessionsHelper
 end

@@ -3,3 +3,5 @@ module SerializableResource
     ActiveModelSerializers::SerializableResource.new(object).as_json
   end
 end
+
+

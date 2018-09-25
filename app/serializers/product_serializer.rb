@@ -1,7 +1,7 @@
 class ProductSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :preview, :description, :price, :quantity,
-              :avg_star, :first_photo, :convert_date,:convert_clock
+              :avg_star, :first_photo, :convert_date,:convert_clock, :getCategory
   belongs_to :category
   has_many :reviews
   has_many :photos
@@ -14,6 +14,12 @@ class ProductSerializer < ActiveModel::Serializer
     return photo
   end
 
+  def getCategory
+    id = object.category_id
+    category = Category.find_by_id id
+    return category
+  end
+  
 
   def convert_date
    id = object.created_at

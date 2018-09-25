@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/category/:id', to: 'home_pages#show'
   get '/product/:id', to: 'home_pages#detail'
   get '/carts/:id', to: 'carts#index'
+
   namespace :authentication do
     get 'sessions/new'
   end
@@ -37,6 +38,9 @@ Rails.application.routes.draw do
       get '/home/categories/:id', to: 'categories#categoryById'
       get '/home/products/popular', to: 'products#popular'
       get '/home/products/detail/:id', to: 'products#detail'
+      get '/carts/:id/remove', to: 'carts#remove_product'
+      get '/carts/:id/add/:add', to: 'carts#add_quantity'
+      get '/carts/:id/remove/:rem', to: 'carts#remove_quantity'
     end
   end
 end

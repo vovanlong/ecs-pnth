@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to 'Home', root_path, class: 'nav-link' %>
+          <a class="nav-link" href="#" ng-click="redirectHome()">Home</a>
         </li>
         <li class="nav-item dropdown" ng-repeat="x in categories">
           <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink{{x.id}}" data-toggle="dropdown" value="{{x.id}}" ng-click="myCategory(x.id)">
@@ -30,16 +30,16 @@
         <li class="nav-item dropdown">
          <% if logged_in? %>
 					<a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
-						<span class="badge badge-primary">9</span><p><%=current_user.name%></p>
+						<span class="badge badge-primary">{{carts.length}}</span><p id="user" data-value="<%=current_user.id%>"><%=current_user.name%></p>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="/signup">
               <i class="now-ui-icons users_circle-08"></i>
             	Đăng kí
 						</a>
-            <a class="dropdown-item" href="/carts/<%=current_user.id%>">
+            <a class="dropdown-item" href="#" ng-click="redirect(<%=current_user.id%>)">
               <i class="now-ui-icons users_circle-08"></i>
-                Giỏ hàng <span class="badge badge-primary">9</span>
+                Giỏ hàng <span class="badge badge-primary" id="total" data-value="<%=current_user.id%>">{{carts.length}}</span>
 						</a>
 						<a class="dropdown-item" href="/logout">
               <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
 					</div>
           <%else%>
           <li class="nav-item">
-            <a class="nav-link" href="/login">
+            <a class="nav-link" href="/login"id="user" data-value="">
               Đăng nhập
             </a>
           </li>

@@ -28,4 +28,6 @@
 //= require home/plugins/bootstrap-datetimepicker
 //= require home/plugins/nouislider.min
 //= require home/angularjs
+//= require sweetalert
+//= require toastr
 //= require_tree .

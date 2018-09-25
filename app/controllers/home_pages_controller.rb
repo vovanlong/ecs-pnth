@@ -1,5 +1,6 @@
 class HomePagesController < ApplicationController
     before_action :load_product_category, only: [:show]
+  
     def index
     end
 

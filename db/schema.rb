@@ -109,11 +109,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_132234) do
     t.integer "role", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "{:foreign_key=>true}_id"
-    t.integer "order_details_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["order_details_id"], name: "index_users_on_order_details_id"
-    t.index ["{:foreign_key=>true}_id"], name: "index_users_on_{:foreign_key=>true}_id"
   end
 
 end
