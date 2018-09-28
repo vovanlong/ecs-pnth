@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get '/carts/:id/remove', to: 'carts#remove_product'
       get '/carts/:id/add/:add', to: 'carts#add_quantity'
       get '/carts/:id/remove/:rem', to: 'carts#remove_quantity'
+      post '/order', to: 'orders#order'
     end
   end
 end

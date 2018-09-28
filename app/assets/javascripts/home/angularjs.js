@@ -296,8 +296,12 @@ HomeApp.controller('cartController', function($scope,$http){
   }
   $http(request)
   .then(function(res){
-    $scope.carts = res.data.cart
-    console.log($scope.carts)
+    if (res.data.cart[0].order.status != 1) {
+      return $scope.carts = res.data.cart
+    }else {
+      swal("Thông báo", "Giỏ hàng của bạng đang trống", "error");
+    }
+    
     
   });
   $scope.removeItem = function(index,cartId, name) {
@@ -324,7 +328,6 @@ HomeApp.controller('cartController', function($scope,$http){
 } 
 $scope.submitForm = function(){
   // data-dismiss="modal" aria-hidden="true"
-  console.log("vao roi nhes :))))")
   var data = $.param({
     name: $scope.receiver,
     phone_number: $scope.phone,
@@ -332,12 +335,14 @@ $scope.submitForm = function(){
   })
   var config = {
     headers:{
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;',
+      'Authorization': userId
     }
   }
-  document.getElementById('order').setAttribute("data-dismiss","modal");
-  document.getElementById('order').setAttribute("aria-hidden","true");
-  
+  $http.post('http://localhost:3000/api/v1/order',JSON.stringify(data), config)
+  .then(function(data){
+    document.getElementById('order').setAttribute("data-dismiss","modal");
+  });
 }
   $scope.totalQuantity = function(){
     return '1'

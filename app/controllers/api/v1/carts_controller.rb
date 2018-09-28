@@ -25,21 +25,6 @@ module Api
         else 
           render json: {status: 404, message: "trong kho hết rồi mua làm ci"}
         end
-        # if @order_detail.save!
-        #   @product = Product.find_by_id @order_detail.product_id
-          
-            
-        #   quantity_new = @product.quantity - @order_detail.quantity
-        #   if quantity_new > 0
-        #     @product.update_attributes(:quantity => quantity_new)
-        #   else
-        #     render json: {status: 404, message: "Hết hàng rồi bạn ơi"}
-        #     return
-        #   end
-        #   render json: {status: 200, order_detail: @order_detail, message: "Bạn mua sản phẩm #{@order_detail.product.name}"}
-        # else 
-        #   render json: {status: 400, message: 'thêm vào giỏ hàng thất bại'}
-        # end
       end
 
       def remove_product
