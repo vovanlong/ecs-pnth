@@ -1,6 +1,6 @@
 class Admin::CategoriesController < Admin::BaseController
   before_action :load_category, only: [:edit, :update, :destroy]
-
+  before_action :loggin_admin
   def index
     @category = Category.new
     @cateory_select =  Category.list_categories.where('parent_id > ?', 0)
@@ -12,7 +12,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def create
     
-    binding.pry
+    # binding.pry
     
     parent_id = params[:category][:parent_id]
     @category = Category.new category_params

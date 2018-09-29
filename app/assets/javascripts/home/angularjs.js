@@ -1,4 +1,5 @@
 var HomeApp = angular.module('HomeApp',[]);
+
 HomeApp.controller('navbarController', function($scope,$http){
   $http.get("http://localhost:3000/api/v1/home/categories")
   .then(function(response){
@@ -263,7 +264,7 @@ HomeApp.controller('cartController', function($scope,$http){
   console.log(userId)
   $scope.increase = function(count,cartId,totalProduct){
     console.log("nguyenchimax"+cartId)
-    if(totalProduct <= count){
+    if(totalProduct >= count){
       $http.get('http://localhost:3000/api/v1/carts/'+cartId+'/add/'+count)
       .then(function(res){
         console.log(totalProduct)
@@ -283,7 +284,7 @@ HomeApp.controller('cartController', function($scope,$http){
     .then(function(res){
       console.log(res)
     })}else{
-      swal("Cảnh báo", "Hàng trong kho chỉ có "+totalProduct+" bạn không thể chọn thêm", "error");
+      swal("Cảnh báo", "Hàng trong kho chỉ có "+0+" bạn không thể chọn thêm", "error");
     }
     
   }
@@ -296,13 +297,7 @@ HomeApp.controller('cartController', function($scope,$http){
   }
   $http(request)
   .then(function(res){
-    if (res.data.cart[0].order.status != 1) {
-      return $scope.carts = res.data.cart
-    }else {
-      swal("Thông báo", "Giỏ hàng của bạng đang trống", "error");
-    }
-    
-    
+      $scope.carts = res.data.cart
   });
   $scope.removeItem = function(index,cartId, name) {
     swal({
@@ -328,6 +323,7 @@ HomeApp.controller('cartController', function($scope,$http){
 } 
 $scope.submitForm = function(){
   // data-dismiss="modal" aria-hidden="true"
+  document.getElementById('order').setAttribute("data-dismiss","modal");
   var data = $.param({
     name: $scope.receiver,
     phone_number: $scope.phone,
@@ -341,11 +337,24 @@ $scope.submitForm = function(){
   }
   $http.post('http://localhost:3000/api/v1/order',JSON.stringify(data), config)
   .then(function(data){
-    document.getElementById('order').setAttribute("data-dismiss","modal");
+   console.log(data)
   });
 }
   $scope.totalQuantity = function(){
     return '1'
   }
 });
-
+HomeApp.controller('information', function($scope,$http){
+  var userId = document.getElementById('table').getAttribute('data-value');
+  console.log(userId)
+  var config = {
+    headers:{
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;',
+      'Authorization': userId
+    }
+  }
+  $http.get('http://localhost:3000/api/v1/order/info',config)
+  .then(function(res){
+    $scope.orderinfo = res.data.order
+  });
+});

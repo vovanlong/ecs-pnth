@@ -32,13 +32,13 @@
 
 function deleteSwal(id, name){
   swal({
-    title: "Are you sure?",
-    text: "Ban co muon xoa " + name,
+    title: "Thông báo",
+    text: "Bạn có muốn xóa " + name,
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: '#DD6B55',
-    confirmButtonText: 'Yes, I am sure!',
-    cancelButtonText: "No, cancel it!",
+    confirmButtonText: 'OK!',
+    cancelButtonText: "Không",
     closeOnConfirm: false,
     closeOnCancel: true
   },

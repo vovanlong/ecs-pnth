@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   before_action :load_user, only: [:edit, :update, :destroy]
-  
+  before_action :loggin_admin
   def index
     @users = User.all.paginate(:page => params[:page])
   end

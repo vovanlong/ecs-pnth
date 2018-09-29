@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/category/:id', to: 'home_pages#show'
   get '/product/:id', to: 'home_pages#detail'
   get '/carts/:id', to: 'carts#index'
+  get '/order/info', to: 'carts#information'
+  # get '/carts/info', to: 'carts#info'
 
   namespace :authentication do
     get 'sessions/new'
@@ -42,6 +44,7 @@ Rails.application.routes.draw do
       get '/carts/:id/add/:add', to: 'carts#add_quantity'
       get '/carts/:id/remove/:rem', to: 'carts#remove_quantity'
       post '/order', to: 'orders#order'
+      get '/order/info', to: 'orders#info_order'
     end
   end
 end

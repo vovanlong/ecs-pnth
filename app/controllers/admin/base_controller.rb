@@ -15,7 +15,7 @@ class Admin::BaseController < ApplicationController
     def loggin_admin
       unless current_user.role == 1 || 2
         flash[:danger] = "You not admin"
-        redirect_to admin_path
+        redirect_to root_path
       end
     end
 end

@@ -16,37 +16,24 @@
           <ul id="side-main-menu" class="side-menu list-unstyled">  
             <li>
               <%= link_to admin_path do %>
-                <i class="fa fa-home"></i>Home
+                <i class="fa fa-home"></i>Trang điều khiển
               <% end %>
             </li>                
             <li>
               <%= link_to admin_users_path do %>
-                <i class="fa fa-users"></i>Manager Users
+                <i class="fa fa-users"></i>Quản lý tài khoản
               <% end %>
             </li>
-            <li><a href="forms.html"> <i class="icon-form"></i>Forms</a></li>
-            <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts</a></li>
-            <li><a href="tables.html"> <i class="icon-grid"></i>Tables</a></li>
-            <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
-              <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-               
-
-                
-                <li><a href="#">Page</a></li>
-              </ul>
+            <li>
+              <%= link_to admin_categories_path do %>
+                <i class="fa fa-cog" aria-hidden="true"></i>Quản lý danh mục
+              <% end %>
             </li>
-            <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page</a></li>
-              
-          </ul>
-        </div>
-        <div class="admin-menu">
-          <h5 class="sidenav-heading">Second menu</h5>
-          <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li> <a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-            <li> <a href="#"> <i class="icon-flask"> </i>Demo
-                <div class="badge badge-info">Special</div></a></li>
-            <li> <a href=""> <i class="icon-flask"> </i>Demo</a></li>
-            <li> <a href=""> <i class="icon-picture"> </i>Demo</a></li>
+            <li>
+              <%= link_to admin_products_path do %>
+                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>Quản lý sản phẩm
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>

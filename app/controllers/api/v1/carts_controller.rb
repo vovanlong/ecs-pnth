@@ -4,7 +4,7 @@ module Api
     # before_action :logged_in_user, except: [:remove_product]
      before_action :load_order, only: :create
       def index
-        @carts = OrderDetail.all.where('user_id = ?', request.headers["Authorization"])
+        @carts = OrderDetail.all.where('user_id = ? AND status = 0', request.headers["Authorization"])
         carts_serializer = parse_json @carts
         render json: {cart: carts_serializer}
       end
@@ -37,8 +37,6 @@ module Api
       end
 
       def add_quantity
-        
-        
         nguyen = params[:add].to_i
         @order_detail = OrderDetail.find_by_id params[:id]
         @product = Product.find_by_id @order_detail.product_id

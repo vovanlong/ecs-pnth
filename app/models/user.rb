@@ -40,15 +40,10 @@ class User < ApplicationRecord
     end
 
     def forget
-      
-      # binding.pry
-      
       update_attribute :remember_digest, nil
     end
 
   private
-
-
     def downcase_email
       self.email = email.downcase
     end

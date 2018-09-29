@@ -1,6 +1,6 @@
 class Admin::ProductsController < Admin::BaseController
   before_action :load_product, only: [:edit, :update]
-  
+  before_action :loggin_admin
   def index
     @products = Product.includes(:photos).paginate(:page => params[:page]).order('created_at DESC')
   end

@@ -1,0 +1,36 @@
+
+<div class="row">
+  <div class="col-md-10 ml-auto mr-auto">
+    <h4>Bảng thông tin sản phẩm</h4>
+    <div class="card card-plain">
+      <div class="card-body">
+        <div class="table-responsive" ng-controller="information">
+          <table class="table" id="table" data-value="<%=current_user.id%>">
+            <thead class="">
+              <th class="text-center alert alert-primary">Hóa Đơn</th>
+              <th class="text-center alert alert-success">Tên người nhận</th>
+              <th class="text-center alert alert-info">Địa chỉ nhận hàng</th>
+              <th class="text-center alert alert-warning">Số điện thoại</th>
+              <th class="text-center alert alert-danger">Thời gian mua hàng</th>
+              <th class="text-center alert alert-primary">Actions</th>
+            </thead>
+            <tbody >
+              <tr ng-repeat="info in orderinfo">
+                <td class="text-center">{{info.id}}</td>
+                <td>{{info.name}}</td>
+                <td>{{info.address}}</td>
+                <td class="text-center">{{info.phone_number}}</td>
+                <td class="text-right">{{info.created_at | date : 'dd-MM-yyyy HH:mm'}}</td>
+                <td class="text-right">
+                  <button type="button" rel="tooltip" class="btn btn-success">
+                    Đã Chuyển đi
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   </div>
+  </div>
+</div>

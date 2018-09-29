@@ -1,6 +1,6 @@
 module Admin::ProductsHelper
     def selected
-      binding.pry
+      # binding.pry
     end
     
 end
