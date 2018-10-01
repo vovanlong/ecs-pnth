@@ -1,5 +1,5 @@
 var HomeApp = angular.module('HomeApp',[]);
-var url = "https://eco-pnth.herokuapp.com/"+"api/v1/"
+var url = "http://localhost:3000/"+"api/v1/"
 HomeApp.controller('navbarController', function($scope,$http){
   $http.get(url+"home/categories")
   .then(function(response){
@@ -38,6 +38,9 @@ HomeApp.controller('navbarController', function($scope,$http){
 });
 
 HomeApp.controller('popularProductController',function($scope,$http){
+  $scope.clickDetail = function(id){
+    window.location.replace("/product/"+id);
+  }
   $http.get(url+"home/products/popular")
   .then(function(res){
     $scope.popularProducts = res.data.product_popular
@@ -156,6 +159,9 @@ HomeApp.controller('newProductController',function($scope,$http){
   .then(function(res){
    $scope.newProduct = res.data.product
   });
+  $scope.clickDetail = function(id){
+    window.location.replace("/product/"+id);
+  }
 });
 
 HomeApp.directive('indexCart', function(){
@@ -325,6 +331,7 @@ $scope.submitForm = function(){
   // data-dismiss="modal" aria-hidden="true"
   document.getElementById('order').setAttribute("data-dismiss","modal");
   var data = $.param({
+    none: "",
     name: $scope.receiver,
     phone_number: $scope.phone,
     address: $scope.address
@@ -344,6 +351,7 @@ $scope.submitForm = function(){
     return '1'
   }
 });
+
 HomeApp.controller('information', function($scope,$http){
   var userId = document.getElementById('table').getAttribute('data-value');
   console.log(userId)
@@ -356,6 +364,8 @@ HomeApp.controller('information', function($scope,$http){
   $http.get(url+'order/info',config)
   .then(function(res){
     $scope.orderinfo = res.data.order
+    
   });
- 
+
+  
 });
