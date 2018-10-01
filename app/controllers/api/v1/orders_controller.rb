@@ -8,9 +8,22 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def info_order
+    
+    
     @order_info = Order.all.where('user_id= ? AND status = 1', request.headers["Authorization"])
     render json: {status: 200, order: @order_info}
   end
+
+  def index
+    @orders = Order.all.where("status=1")
+    render json: {status:400, orders: (parse_json @orders)}
+  end
+  
+  def show
+    @products = OrderDetail.all.where('order_id =?',params[:id])
+    render json: {status:200, products:( parse_json @products) }
+  end
+  
 
   private
 

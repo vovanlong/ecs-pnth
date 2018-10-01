@@ -325,6 +325,7 @@ $scope.submitForm = function(){
   // data-dismiss="modal" aria-hidden="true"
   document.getElementById('order').setAttribute("data-dismiss","modal");
   var data = $.param({
+    none: "",
     name: $scope.receiver,
     phone_number: $scope.phone,
     address: $scope.address
@@ -344,6 +345,7 @@ $scope.submitForm = function(){
     return '1'
   }
 });
+
 HomeApp.controller('information', function($scope,$http){
   var userId = document.getElementById('table').getAttribute('data-value');
   console.log(userId)
@@ -356,5 +358,7 @@ HomeApp.controller('information', function($scope,$http){
   $http.get('http://localhost:3000/api/v1/order/info',config)
   .then(function(res){
     $scope.orderinfo = res.data.order
+    
   });
+  
 });

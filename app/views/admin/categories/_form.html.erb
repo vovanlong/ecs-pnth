@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body seminor-login-modal-body">
-       <h5 class="modal-title text-center">Category</h5>
+       <h5 class="modal-title text-center">Thêm danh mục</h5>
         <button type="button" class="close" data-dismiss="modal">
           <span><i class="fa fa-times-circle" aria-hidden="true"></i></span>
         </button>
@@ -10,18 +10,21 @@
           <div class="card-body">
             <%= form_for [:admin,@category], class: "form-horizontal" do |f| %>
               <div class="form-group">
-                <%= f.label :name, "Name Category" %>
+                <%= f.label :name, "Tên danh mục (*)" %>
                 <%= f.text_field :name, class: 'form-control', placeholder: "Name category parent" %> 
               </div>
               <div class="form-group">
-                <%= f.label :description, "Description Category" %>
+                <%= f.label :description, "Mô tả danh mục(*)" %>
                 <%= f.text_field :description, class: 'form-control', placeholder: "Description category parent" %> 
               </div>
               <div class="form-group">
-                <label>Category Child</label>
+                <label>Danh mục lv2</label>
                 <%= f.select :parent_id, options_for_select(@cateory_select.list_categories.map {|p| [p.name, p.id]}), {:include_blank => 'None'}, class: "form-control"  %>
               </div>
-              <%= f.submit "Create an account", class: "btn btn-primary", value: "Edit User" %>
+              <div class="form-group text-center">
+                <%= f.submit "Create an account", class: "btn btn-primary", value: "Thêm" %>
+              </div>
+              
             <% end %>
           </div>
         </div>
