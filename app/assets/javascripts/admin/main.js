@@ -29,7 +29,7 @@
 //= require sweetalert
 //= require turbolinks
 //= require_tree .
-
+var url = "http://localhost:3000/api/v1/"
 function deleteSwal(id, name){
   swal({
     title: "Thông báo",
@@ -77,7 +77,7 @@ app.controller("myCtrl", function($scope,$http){
   $scope.quantity = "" || quantity_product;
   
   
-  $http.get("http://localhost:3000/api/v1/categories")
+  $http.get(url+"categories")
   .then(function(response){
     $scope.longs = response.data.category
     console.log($scope.longs)
@@ -87,11 +87,51 @@ app.controller("myCtrl", function($scope,$http){
   $scope.value = '0';
   $scope.switchLanguage = function(){
     console.log("vovanlong"+$scope.value)
-    $http.get("http://localhost:3000/api/v1/categories/"+$scope.value)
+    $http.get(url+"categories/"+$scope.value)
     .then(function(res){
       $scope.wills = res.data.category_id
       $scope.max = res.data.category_selected
     console.log($scope.max)
     })
+  }
+});
+var orderApp = angular.module("orderApp",[]);
+orderApp.controller("orders",function($scope,$http){
+  $http.get("http://localhost:3000/api/v1/orders")
+  .then(function(res){
+    $scope.orders = res.data.orders
+    // $scope.totalprice = [];
+    //   angular.forEach($scope.orders, function(value, key) {
+       
+    //     var order = [];
+    //     angular.forEach(value.order_details,function(v, k){
+    //       order.push(v.total_price)
+        
+    //     });
+    //     nguyenchimax=value.id
+    //     var total = 0;
+    //     for(var i = 0; i <order.length;i++){
+    //       total += order[i]
+    //     }
+    //     $scope.totalprice.push(total)
+    //     $scope.totalLong = total
+    //     console.log($scope.totalLong)
+    //   });
+    //   console.log($scope.totalprice)
+    //   $scope.long = function(id){
+    //    console.log(id)
+    //     // for(var i=1;i<=id;i++){
+    //     //   return i-1
+    //     // }
+    //   }
+  });
+  
+  $scope.product = function(id,user){
+    console.log(id,user)
+    $http.get('http://localhost:3000/api/v1/product/'+id+'/user/'+user)
+    .then(function(res){
+      $scope.products = res.data.products
+    })
+   
   }
 });

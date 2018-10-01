@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/", to: "dashbroads#index"
     resources :users
     resources :categories
+    resources :orders
     resources :products do
       resources :photos, only: [:create]
     end
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: {format: :json} do
       resources :categories
+
       # resources :products
       resources :carts
       get 'home/products/new', to: 'products#product_new'
@@ -45,6 +47,8 @@ Rails.application.routes.draw do
       get '/carts/:id/remove/:rem', to: 'carts#remove_quantity'
       post '/order', to: 'orders#order'
       get '/order/info', to: 'orders#info_order'
+      get '/orders', to: 'orders#index'
+      get '/product/:id/user/:user', to: 'orders#show'
     end
   end
 end

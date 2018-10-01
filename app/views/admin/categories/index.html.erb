@@ -10,7 +10,7 @@
     <div class="card">
       <div class="col-lg-3" style="padding-top:10px">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sem-reg">
-          Open modal
+          Thêm danh mục
         </button>
         <%= render 'form' %>
       </div>
@@ -18,7 +18,7 @@
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
-              <tr>
+              <tr  class="alert alert-warning">
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
@@ -48,8 +48,9 @@
                 </tr>
               <% end %>
             </tbody>
+            
           </table>
-          <%= will_paginate @categories %>
+            <%= will_paginate @categories %>
         </div>
       </div>
     </div>
