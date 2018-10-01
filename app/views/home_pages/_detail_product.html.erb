@@ -25,6 +25,11 @@
       {{detail.preview}}<br><br>
       <small>{{detail.user.name}}</small>
     </p>
+    <div ng-init="max= 5">
+      <div nginit ="ratings: detail.avg_star">
+        <div star-rating rating-value="ratings" max="max" on-rating-selected="getSelectedRating(ratings)"></div>
+      </div>
+    </div>
   </div>
   <div class="col-md-6 ml-auto mr-auto">
     <h2 class="title"> {{detail.name}} </h2>
@@ -66,57 +71,6 @@
           </div>
         </div>
       </div>
-      <div class="card card-plain">
-        <div class="card-header" role="tab" id="headingTwo">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Review
-            <i class="now-ui-icons arrows-1_minimal-down"></i>
-          </a>
-        </div>
-        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="card-body">
-            <p>An infusion of West Coast cool and New York attitude, Rebecca Minkoff is synonymous with It girl style. Minkoff burst on the fashion scene with her best-selling 'Morning After Bag' and later expanded her offering with the Rebecca Minkoff Collection - a range of luxe city staples with a "downtown romantic" theme.</p>
-          </div>
-        </div>
-      </div>
-      <div class="card card-plain">
-        <div class="card-header" role="tab" id="headingThree">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Details and Care
-            <i class="now-ui-icons arrows-1_minimal-down"></i>
-          </a>
-        </div>
-        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="card-body">
-            <ul>
-              <li>Storm and midnight-blue stretch cotton-blend</li>
-              <li>Notch lapels, functioning buttoned cuffs, two front flap pockets, single vent, internal pocket</li>
-              <li>Two button fastening</li>
-              <li>84% cotton, 14% nylon, 2% elastane</li>
-              <li>Dry clean</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row pick-size">
-      <div class="col-lg-6 col-md-8 col-sm-6">
-      <label>Select color</label>
-      <select class="selectpicker" data-style="select-with-transition btn btn-block" data-size="7">
-        <option value="1">Black</option>
-        <option value="2">Gray</option>
-        <option value="3">White</option>
-      </select>
-      </div>
-        <div class="col-lg-6 col-md-8 col-sm-6">
-        <label>Select size</label>
-        <select class="selectpicker" data-style="select-with-transition btn btn-block" data-size="7">
-          <option value="1">Small </option>
-          <option value="2">Medium</option>
-          <option value="3">Large</option>
-        </select>
-      </div>
     </div>
     <div class="row justify-content-end">
       <% if current_user.nil? %>
@@ -124,8 +78,6 @@
       <%else%>
       <button class="btn btn-primary mr-3" ng-click="addCart(count,count * detail.price,detail.id,<%=current_user.id%>)">Add to Cart &nbsp;<i class="now-ui-icons shopping_cart-simple"></i></button>
       <% end %>
-      
-      
     </div>
   </div>
 </div>

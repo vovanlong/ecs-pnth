@@ -19,8 +19,16 @@ class Api::V1::ProductsController < ApplicationController
   def product_new
     @products = Product.all.order('products.created_at DESC').limit(6)
     new_product = parse_json @products
+
     render json: {product:new_product}
   end
+  
+  def related
+    @products = Product.find_by_id params[:id]
+    @related_products = Product.related_products(@products).limit(3)
+    render json: {status: 200, product: (parse_json @related_products)}
+  end
+  
   
   private
     def load_product

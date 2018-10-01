@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       get '/home/categories/:id', to: 'categories#categoryById'
       get '/home/products/popular', to: 'products#popular'
       get '/home/products/detail/:id', to: 'products#detail'
+      get '/home/related/:id', to: 'products#related'
       get '/carts/:id/remove', to: 'carts#remove_product'
       get '/carts/:id/add/:add', to: 'carts#add_quantity'
       get '/carts/:id/remove/:rem', to: 'carts#remove_quantity'

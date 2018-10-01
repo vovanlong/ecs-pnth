@@ -29,7 +29,7 @@
 //= require sweetalert
 //= require turbolinks
 //= require_tree .
-var url = "https://eco-pnth.herokuapp.com/"+"api/v1/"
+var url = "http://localhost:3000/"+"api/v1/"
 function deleteSwal(id, name){
   swal({
     title: "Thông báo",
@@ -57,8 +57,8 @@ $(document).ready(function(){
     realTime : true,
   },
   {
-    required  : 'Please fill out this field as it is required.',
-    email : 'Please enter a valid email address.'
+    required  : 'Bạn k được để trống ô này nhé.',
+    email : 'Email không đúng.'
   });
 });
 var full_url = document.URL;
@@ -75,15 +75,12 @@ app.controller("myCtrl", function($scope,$http){
   $scope.name = "" || name_product;
   $scope.description = "" || description_product;
   $scope.quantity = "" || quantity_product;
-  
-  
   $http.get(url+"categories")
   .then(function(response){
     $scope.longs = response.data.category
     console.log($scope.longs)
     
   })
-
   $scope.value = '0';
   $scope.switchLanguage = function(){
     console.log("vovanlong"+$scope.value)
@@ -98,6 +95,7 @@ app.controller("myCtrl", function($scope,$http){
 var orderApp = angular.module("orderApp",[]);
 orderApp.controller("orders",function($scope,$http){
   $http.get(url+"orders")
+
   .then(function(res){
     $scope.orders = res.data.orders
     // $scope.totalprice = [];
@@ -132,5 +130,6 @@ orderApp.controller("orders",function($scope,$http){
     .then(function(res){
       $scope.products = res.data.products
     })
+
   }
 });

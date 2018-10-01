@@ -1,5 +1,5 @@
 var HomeApp = angular.module('HomeApp',[]);
-var url = "https://eco-pnth.herokuapp.com/"+"api/v1/"
+var url = "http://localhost:3000/"+"api/v1/"
 HomeApp.controller('navbarController', function($scope,$http){
   $http.get(url+"home/categories")
   .then(function(response){
@@ -38,6 +38,9 @@ HomeApp.controller('navbarController', function($scope,$http){
 });
 
 HomeApp.controller('popularProductController',function($scope,$http){
+  $scope.clickDetail = function(id){
+    window.location.replace("/product/"+id);
+  }
   $http.get(url+"home/products/popular")
   .then(function(res){
     $scope.popularProducts = res.data.product_popular
@@ -80,7 +83,7 @@ HomeApp.controller('detailController',function($scope,$http){
   $scope.angularjs = function(){
     console.log("long")
   }
-  
+ 
   $scope.delete = function(count,quantity){
     if (count < 0) {
       swal("Cảnh báo", "Không được chọn số lượng như vậy", "error");
@@ -97,11 +100,17 @@ HomeApp.controller('detailController',function($scope,$http){
       swal("Cảnh báo", "Trong kho chỉ có "+ quantity +" sản phẩm bạn hãy chọn lại", "error");
     }
   };
+  var avg = 0;
   $http.get(url+"home/products/detail/"+id_product)
   .then(function(res){
     $scope.detail = res.data.product_detail
     $scope.picture = res.data.product_detail.photos
     console.log($scope.picture)
+    this.avg =$scope.detail.avg_star
+   
+    
+
+    console.log($scope.ratings)
     $scope.active = function(v){
       if (v == 0) {
         return 'active'
@@ -109,7 +118,18 @@ HomeApp.controller('detailController',function($scope,$http){
         return ''
       }
     };
+    // let star = $scope.detail.avg_star
+    // console.log("nguyenchimax"+$scope.star)
+   
   });
+  $scope.ratings = {
+    current: 4,
+    max: 5
+  };
+  console.log(avg)
+  // console.log("nguyenchimax"+star)
+  // console.log("long"+$scope.star)
+ 
   $scope.redirecLogin =  function(){
     window.location.replace("/login");
   }
@@ -156,6 +176,9 @@ HomeApp.controller('newProductController',function($scope,$http){
   .then(function(res){
    $scope.newProduct = res.data.product
   });
+  $scope.clickDetail = function(id){
+    window.location.replace("/product/"+id);
+  }
 });
 
 HomeApp.directive('indexCart', function(){
@@ -325,6 +348,7 @@ $scope.submitForm = function(){
   // data-dismiss="modal" aria-hidden="true"
   document.getElementById('order').setAttribute("data-dismiss","modal");
   var data = $.param({
+    none: "",
     name: $scope.receiver,
     phone_number: $scope.phone,
     address: $scope.address
@@ -344,6 +368,7 @@ $scope.submitForm = function(){
     return '1'
   }
 });
+
 HomeApp.controller('information', function($scope,$http){
   var userId = document.getElementById('table').getAttribute('data-value');
   console.log(userId)
@@ -356,6 +381,60 @@ HomeApp.controller('information', function($scope,$http){
   $http.get(url+'order/info',config)
   .then(function(res){
     $scope.orderinfo = res.data.order
+    
   });
- 
+
+  
+});
+HomeApp.controller('relatedProduct', function($scope,$http){
+  var full_url = document.URL;
+  var url_array = full_url.split('/')
+  var id_product = url_array[url_array.length-1];
+  console.log("YRL"+id_product)
+  $http.get('http://localhost:3000/api/v1/home/related/'+id_product)
+  .then(function(res){
+    $scope.productRelated = res.data.product
+  });
+  $scope.click=function(id){
+    window.location.replace("/product/"+id);
+  }
+})
+HomeApp.directive('starRating', function () {
+  return {
+      restrict: 'A',
+      template: '<ul class="rating">' +
+          '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+          '\u2605' +
+          '</li>' +
+          '</ul>',
+      scope: {
+          ratingValue: '=',
+          max: '=',
+          onRatingSelected: '&'
+      },
+      link: function (scope, elem, attrs,$http) {
+
+          var updateStars = function () {
+              scope.stars = [];
+              for (var i = 0; i < scope.max; i++) {
+                  scope.stars.push({
+                      filled: i < scope.ratingValue
+                  });
+              }
+          };
+
+          scope.toggle = function (index) {
+              scope.ratingValue = index + 1;
+              scope.onRatingSelected({
+                  rating: index + 1
+              });
+          };
+
+          scope.$watch('ratingValue', function (oldVal, newVal) {
+              if (newVal) {
+                  updateStars();
+              }
+          });
+      }
+  }
 });

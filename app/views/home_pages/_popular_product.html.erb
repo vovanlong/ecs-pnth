@@ -7,7 +7,7 @@
       <div class="col-lg-4 col-md-6" ng-repeat="product in popularProducts | limitTo: limit">
         <div class="card card-product card-plain">
           <div class="card-image" ng-init="picture = product.first_photo.image.standard.url">
-            <a href="#">
+            <a href="#" ng-click="clickDetail(product.id)">
               <img ng-src="{{picture}}" alt="...">
             </a>
           </div>
