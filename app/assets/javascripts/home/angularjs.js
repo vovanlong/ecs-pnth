@@ -1,12 +1,12 @@
 var HomeApp = angular.module('HomeApp',[]);
-
+var url = "https://eco-pnth.herokuapp.com/"+"api/v1/"
 HomeApp.controller('navbarController', function($scope,$http){
-  $http.get("http://localhost:3000/api/v1/home/categories")
+  $http.get(url+"home/categories")
   .then(function(response){
     $scope.categories = response.data.category
     console.log( $scope.categories )
     $scope.myCategory = function(id){
-    $http.get("http://localhost:3000/api/v1/home/categories/"+id)
+    $http.get(url+"home/categories/"+id)
      .then(function(res){
         $scope.categoriesId = res.data.categoryid
         
@@ -23,7 +23,7 @@ HomeApp.controller('navbarController', function($scope,$http){
    
     var request = {
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/carts',
+      url: url+'carts',
       headers: {
         'Authorization': userId
       }
@@ -38,7 +38,7 @@ HomeApp.controller('navbarController', function($scope,$http){
 });
 
 HomeApp.controller('popularProductController',function($scope,$http){
-  $http.get("http://localhost:3000/api/v1/home/products/popular")
+  $http.get(url+"home/products/popular")
   .then(function(res){
     $scope.popularProducts = res.data.product_popular
     var listPopulars = $scope.popularProducts
@@ -97,7 +97,7 @@ HomeApp.controller('detailController',function($scope,$http){
       swal("Cảnh báo", "Trong kho chỉ có "+ quantity +" sản phẩm bạn hãy chọn lại", "error");
     }
   };
-  $http.get("http://localhost:3000/api/v1/home/products/detail/"+id_product)
+  $http.get(url+"home/products/detail/"+id_product)
   .then(function(res){
     $scope.detail = res.data.product_detail
     $scope.picture = res.data.product_detail.photos
@@ -127,7 +127,7 @@ HomeApp.controller('detailController',function($scope,$http){
           'Authorization': user_id
         }
     }
-    $http.post('http://localhost:3000/api/v1/carts',JSON.stringify(data),config)
+    $http.post(url+'carts',JSON.stringify(data),config)
     .then(function(data){
         $scope.PostDataResponse = data.data;
         // sweet()
@@ -152,7 +152,7 @@ function sweet(message){
   });
 }
 HomeApp.controller('newProductController',function($scope,$http){
-  $http.get('http://localhost:3000/api/v1/home/products/new')
+  $http.get(url+'home/products/new')
   .then(function(res){
    $scope.newProduct = res.data.product
   });
@@ -265,7 +265,7 @@ HomeApp.controller('cartController', function($scope,$http){
   $scope.increase = function(count,cartId,totalProduct){
     console.log("nguyenchimax"+cartId)
     if(totalProduct >= count){
-      $http.get('http://localhost:3000/api/v1/carts/'+cartId+'/add/'+count)
+      $http.get(url+'carts/'+cartId+'/add/'+count)
       .then(function(res){
         console.log(totalProduct)
         if(res.data){
@@ -280,7 +280,7 @@ HomeApp.controller('cartController', function($scope,$http){
   $scope.reduction = function(count,cartId,totalProduct){
     console.log("nguyenchimax"+cartId)
     if (totalProduct <= count ) {
-      $http.get('http://localhost:3000/api/v1/carts/'+cartId+'/remove/'+count)
+      $http.get(url+'carts/'+cartId+'/remove/'+count)
     .then(function(res){
       console.log(res)
     })}else{
@@ -290,7 +290,7 @@ HomeApp.controller('cartController', function($scope,$http){
   }
   var request = {
     method: 'GET',
-    url: 'http://localhost:3000/api/v1/carts',
+    url: url+'carts',
     headers: {
       'Authorization': userId
     }
@@ -311,7 +311,7 @@ HomeApp.controller('cartController', function($scope,$http){
       //closeOnCancel: false
     },
     function(){
-      $http.get('http://localhost:3000/api/v1/carts/'+cartId+'/remove')
+      $http.get(url+'carts/'+cartId+'/remove')
       .then(function(res){
       $scope.carts.splice(index, 1);
       swal("Xóa sản phẩm!", "bạn đã xóa "+name+" ra khỏi giỏ hàng", "success");
@@ -325,7 +325,6 @@ $scope.submitForm = function(){
   // data-dismiss="modal" aria-hidden="true"
   document.getElementById('order').setAttribute("data-dismiss","modal");
   var data = $.param({
-    none: "",
     name: $scope.receiver,
     phone_number: $scope.phone,
     address: $scope.address
@@ -336,7 +335,7 @@ $scope.submitForm = function(){
       'Authorization': userId
     }
   }
-  $http.post('http://localhost:3000/api/v1/order',JSON.stringify(data), config)
+  $http.post(url+'order',JSON.stringify(data), config)
   .then(function(data){
    console.log(data)
   });
@@ -345,7 +344,6 @@ $scope.submitForm = function(){
     return '1'
   }
 });
-
 HomeApp.controller('information', function($scope,$http){
   var userId = document.getElementById('table').getAttribute('data-value');
   console.log(userId)
@@ -355,10 +353,9 @@ HomeApp.controller('information', function($scope,$http){
       'Authorization': userId
     }
   }
-  $http.get('http://localhost:3000/api/v1/order/info',config)
+  $http.get(url+'order/info',config)
   .then(function(res){
     $scope.orderinfo = res.data.order
-    
   });
-  
+ 
 });

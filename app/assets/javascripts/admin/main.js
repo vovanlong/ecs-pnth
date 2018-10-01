@@ -29,7 +29,7 @@
 //= require sweetalert
 //= require turbolinks
 //= require_tree .
-var url = "http://localhost:3000/api/v1/"
+var url = "https://eco-pnth.herokuapp.com/"+"api/v1/"
 function deleteSwal(id, name){
   swal({
     title: "Thông báo",
@@ -97,7 +97,7 @@ app.controller("myCtrl", function($scope,$http){
 });
 var orderApp = angular.module("orderApp",[]);
 orderApp.controller("orders",function($scope,$http){
-  $http.get("http://localhost:3000/api/v1/orders")
+  $http.get(url+"orders")
   .then(function(res){
     $scope.orders = res.data.orders
     // $scope.totalprice = [];
@@ -128,10 +128,9 @@ orderApp.controller("orders",function($scope,$http){
   
   $scope.product = function(id,user){
     console.log(id,user)
-    $http.get('http://localhost:3000/api/v1/product/'+id+'/user/'+user)
+    $http.get(url+'product/'+id+'/user/'+user)
     .then(function(res){
       $scope.products = res.data.products
     })
-   
   }
 });
